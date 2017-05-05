@@ -1,0 +1,28 @@
+def findAllPaths(currX, currY, path, grid, sum):
+    #print currX, currY
+    if currX == len(grid)-1:
+        i = currY
+        temp = 0
+        while i < len(grid):
+            path = path + str(grid[currX][i])
+            temp += grid[currX][i]
+            i += 1
+        sum.append(temp)
+        #print 'first loop', sum, path
+        return
+    if currY == len(grid)-1:
+        i = currX
+        temp = 0
+        while i < len(grid):
+            path = path + str(grid[i][currY])
+            temp += grid[i][currY]
+            i += 1
+        sum.append(temp)
+        #print 'second loop', sum, path
+        return
+    #print currX, currY
+    #path = path + str(grid[currX][currY])
+    findAllPaths(currX+1,currY,path,grid, sum)
+    findAllPaths(currX, currY+1,path,grid, sum)
+
+    return sum
